@@ -60,7 +60,7 @@
 #' In other words, take the simulation performance results with a grain of salt. However, the closer the real-life trial adheres to the ideal simulation conditions,
 #' and the more sure we are about the "true" chances of toxicity and futility, the closer the actual outcome will adhere to what is expected from simulation results!
 #' For example, if simulation results show that the correct dose is chosen in 73% of trials, then in one real-life trial there is a 73% chance that the trial outcomes will point to a truly acceptable dose.
-
+#' @export
 run_simulation <- function(true_probs, dose_levels, starting_dose, PF, PF_tolerance, eta, PT, PT_tolerance, zeta, cohort_size = 3, max_samp_size = 24, num_sims = 1000, filter = 0.5, seed = 111) {
   if (!requireNamespace("stats", quietly = TRUE)) {
     stop("Package \"stats\" needed for this function to work. Please install it.",

@@ -8,6 +8,7 @@
 #' @param tolerance Half-length of the equivalence interval
 #' @return Calculated numeric loss for given value
 #' @usage ploss(value = 0.18, target = 0.2, tolerance = 0.05) #calculate loss for 0.18 when equivalence interval is [0.15,0.25]
+#' @export
 ploss <- function(value, target, tolerance) {
   loss = 0
 

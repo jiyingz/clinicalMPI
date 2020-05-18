@@ -8,6 +8,7 @@
 #' \[dose level | availability | N_d | X_d | Y_d | Z_d | pf | pe | pt\]
 #' @return Updated dose-response table dataframe with adjusted availabilities
 #' @usage dose_info = adjust_for_futility_rule(60, dose_info) #if dose level 60 invoked futility rule
+#' @export
 adjust_for_futility_rule <- function(dose, dose_info) {
   dose_ind = which(dose_info$dose_lvl == dose)
   if (length(dose_ind) == 0) {stop('Invalid dose value. Please enter the dose value and not the index.')}

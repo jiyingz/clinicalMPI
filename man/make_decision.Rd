@@ -11,7 +11,6 @@ selected = select_highestprob_interval(dose_info, pf_matrix, pt_matrix)
 best_pf = selected$best_pf
 best_pt = selected$best_pt
 decision_table[f_count+1, t_count+1] = make_decision(best_pf, best_pt, pf_matrix, pt_matrix,
-                                                     PF = 0.2, PF_tolerance = 0.05, PT = 0.2, PT_tolerance = 0.05)
 }
 \arguments{
 \item{best_pf}{Futility interval index for chosen model}

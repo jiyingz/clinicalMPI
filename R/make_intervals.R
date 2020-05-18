@@ -17,6 +17,7 @@
 #' pf_matrix = intervals$pf_matrix
 #'
 #' pt_matrix = intervals$pt_matrix
+#' @export
 make_intervals <- function(PF, PF_tolerance, eta, PT, PT_tolerance, zeta) {
   if (PF_tolerance < 1e-5) {stop('PF_tolerance too small, estimates may be unstable')}
   if (PT_tolerance < 1e-5) {stop('PT_tolerance too small, estimates may be unstable')}

@@ -22,6 +22,7 @@
 #' @param closest_higher_dose If decision is to escalate, the closest available higher dose, `Inf` if none available. Defaults to `NA`.
 #' @return Boolean T/F whether any stopping rules were violated
 #' @usage check_stopping_rules(80, dose_info, 15, 24, "D", closest_lower_dose = 60)
+#' @export
 check_stopping_rules <- function(dose, dose_info, sample_size, max_samp_size, decision = NA, closest_lower_dose = NA, closest_higher_dose = NA) {
   if (!(decision %in% c(NA, "DU", "D", "S", "E", "EU"))) {stop('Invalid decision.')}
   if (!(dose %in% dose_info$dose_lvl)) {stop('Invalid dose value. Please enter the dose value and not the index.')}

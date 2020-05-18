@@ -16,6 +16,7 @@
 #' @usage selected = select_highestprob_interval(dose_info, pf_matrix, pt_matrix)
 #' best_pf = selected$best_pf
 #' best_pt = selected$best_pt
+#' @export
 select_highestprob_interval <- function(dose_info, pf_matrix, pt_matrix) {
   if (!requireNamespace("stats", quietly = TRUE)) {
     stop("Package \"stats\" needed for this function to work. Please install it.",

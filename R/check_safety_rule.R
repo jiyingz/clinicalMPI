@@ -8,6 +8,7 @@
 #' @param zeta Invoke stopping rule if more than this proportion of subjects exhibit toxicity
 #' @return Boolean T/F whether safety rule was violated
 #' @usage check_safety_rule(80, dose_info, 0.8)
+#' @export
 check_safety_rule <- function(dose, dose_info, zeta) {
   dose_ind = which(dose_info$dose_lvl == dose)
   if (length(dose_ind) == 0) {stop('Invalid dose value. Please enter the dose value and not the index.')}

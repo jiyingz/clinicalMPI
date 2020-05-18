@@ -13,6 +13,7 @@
 #' and then taking Utility = 1 - mean(all toxicity losses) - mean(all futility losses).
 #'
 #' Note that the bottleneck of this function is `num_samples` -- the higher this value is, the slower the overall simulation performance. Between 1e4 and 1e6 is a reasonable range.
+#' @export
 calc_utility <- function(a, b, c, num_samples = 1e4) {
   if (num_samples < 1e3) {stop('please set num_samples higher to increase precision')}
   if (!requireNamespace("MCMCpack", quietly = TRUE)) {

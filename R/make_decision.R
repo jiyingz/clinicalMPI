@@ -20,7 +20,7 @@
 #' best_pf = selected$best_pf
 #' best_pt = selected$best_pt
 #' decision_table[f_count+1, t_count+1] = make_decision(best_pf, best_pt, pf_matrix, pt_matrix,
-#'                                                      PF = 0.2, PF_tolerance = 0.05, PT = 0.2, PT_tolerance = 0.05)
+#' @export                                              PF = 0.2, PF_tolerance = 0.05, PT = 0.2, PT_tolerance = 0.05)
 make_decision <- function(best_pf, best_pt, pf_matrix, pt_matrix, PF, PF_tolerance, PT, PT_tolerance) {
   pf_EI = which(mapply(function(x, y) {isTRUE(all.equal(x, y))}, pf_matrix[,1], PF - PF_tolerance))
   pt_EI = which(mapply(function(x, y) {isTRUE(all.equal(x, y))}, pt_matrix[,1], PT - PT_tolerance))
