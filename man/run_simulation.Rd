@@ -21,7 +21,7 @@ PT_tolerance = 0.05
 zeta = 0.8
 #cohort size is 3, max sample size is 24, using defaults
 
-results = run_simulations(true_probs, dose_levels, starting_dose, PF, PF_tolerance, eta, PT, PT_tolerance, zeta)
+results = run_simulation(true_probs, dose_levels, starting_dose, PF, PF_tolerance, eta, PT, PT_tolerance, zeta)
 }
 \arguments{
 \item{true_probs}{A Dx3 matrix containing the true chances of treatment futility, efficacy, and toxicity, where D = # of dose levels}

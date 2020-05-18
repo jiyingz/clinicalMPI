@@ -43,7 +43,7 @@
 #' zeta = 0.8
 #' #cohort size is 3, max sample size is 24, using defaults
 #'
-#' results = run_simulations(true_probs, dose_levels, starting_dose, PF, PF_tolerance, eta, PT, PT_tolerance, zeta)
+#' results = run_simulation(true_probs, dose_levels, starting_dose, PF, PF_tolerance, eta, PT, PT_tolerance, zeta)
 #' @details In order to run simulations, decision tables must be pre-specified (e.g. by using the `make_decision_table()` function) and loaded into the working environment.
 #' All decision tables must be named in the format "decision_table#", where # = dose sample size.
 #'
