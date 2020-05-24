@@ -26,8 +26,9 @@ A matrix containing the decision table.
 Futility counts are on the row axis, and toxicity counts are on the column axis.
 }
 \description{
-Produces the un-smoothed decision table for a certain dose sample size using given parameters and thresholds.
-The decision table should be generalizable to any dose level.
+Produces the pre-smoothed decision table for a certain dose sample size using given parameters and thresholds.
+The decision table should be generalizable to any dose level. Safety is valued over efficacy, so any estimates exceeding the
+toxicity tolerance will call for de-escalation.
 
 \strong{IMPORTANT:} The decision table must be named in the following format to run simulations: "decision_table#" where #=N.
 }

@@ -1,7 +1,8 @@
 #' Make Decision Table
 #'
-#' @description Produces the un-smoothed decision table for a certain dose sample size using given parameters and thresholds.
-#' The decision table should be generalizable to any dose level.
+#' @description Produces the pre-smoothed decision table for a certain dose sample size using given parameters and thresholds.
+#' The decision table should be generalizable to any dose level. Safety is valued over efficacy, so any estimates exceeding the
+#' toxicity tolerance will call for de-escalation.
 #'
 #' **IMPORTANT:** The decision table must be named in the following format to run simulations: "decision_table#" where #=N.
 #' @param N Number of patients tested at a dose
@@ -37,14 +38,15 @@ make_decision_table <- function(N, PF, PF_tolerance, eta, PT, PT_tolerance, zeta
 
         if (check_safety_rule(dose, dose_info, zeta) == TRUE) { #upper right corner of decision table
           decision_table[f_count+1, t_count+1] = "DU"
-        } else if (check_futility_rule(dose, dose_info, eta) == TRUE) { #lower left corner of decision table
-          decision_table[f_count+1, t_count+1] = "EU"
         } else {
           selected = select_highestprob_interval(dose_info, pf_matrix, pt_matrix)
           best_pf = selected$best_pf
           best_pt = selected$best_pt
           decision_table[f_count+1, t_count+1] = make_decision(best_pf, best_pt, pf_matrix, pt_matrix,
                                                                PF, PF_tolerance, PT, PT_tolerance)
+          if (check_futility_rule(dose, dose_info, eta) == TRUE & dose_info$pt < PF+PF_tolerance) { #lower left corner of decision table
+            decision_table[f_count+1, t_count+1] = "EU"
+          }
         }
       }
     }
