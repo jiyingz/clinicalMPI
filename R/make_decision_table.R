@@ -44,7 +44,7 @@ make_decision_table <- function(N, PF, PF_tolerance, eta, PT, PT_tolerance, zeta
           best_pt = selected$best_pt
           decision_table[f_count+1, t_count+1] = make_decision(best_pf, best_pt, pf_matrix, pt_matrix,
                                                                PF, PF_tolerance, PT, PT_tolerance)
-          if (check_futility_rule(dose, dose_info, eta) == TRUE & dose_info$pt < PF+PF_tolerance) { #lower left corner of decision table
+          if (check_futility_rule(dose, dose_info, eta) == TRUE & dose_info$pt < PT+PT_tolerance) { #lower left corner of decision table
             decision_table[f_count+1, t_count+1] = "EU"
           }
         }
