@@ -46,7 +46,7 @@ select_highestprob_interval <- function(dose_info, pf_matrix, pt_matrix) {
     }
   }
 
-  best_rect_ind = which(selected$post_probs == max(selected$post_probs, na.rm = T), arr.ind = T)
+  best_rect_ind = which(post_probs == max(post_probs, na.rm = T), arr.ind = T)
   best_pf = best_rect_ind[1]
   best_pt = best_rect_ind[2]
 

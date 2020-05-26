@@ -40,7 +40,7 @@ make_intervals <- function(PF, PF_tolerance, eta, PT, PT_tolerance, zeta) {
 
     continue = TRUE
     while (continue) { #add lower intervals
-      if (low < 0) {
+      if (low <= 0) {
         low = 0
         continue = FALSE
       }
