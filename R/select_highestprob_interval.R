@@ -23,10 +23,10 @@ select_highestprob_interval <- function(dose_info, pf_matrix, pt_matrix) {
          call. = FALSE)
   }
 
-  post_probs = matrix(0, nrow = nrow(pf_matrix)-2, ncol = nrow(pt_matrix)-2)
+  post_probs = matrix(0, nrow = nrow(pf_matrix), ncol = nrow(pt_matrix))
 
-  for (i in 1:(nrow(post_probs)-2)) {
-    for (j in 1:(ncol(post_probs)-2)) {
+  for (i in 1:(nrow(post_probs))) {
+    for (j in 1:(ncol(post_probs))) {
 
       pf_low = as.numeric(pf_matrix[i,1])
       pf_high = as.numeric(pf_matrix[i,2])
