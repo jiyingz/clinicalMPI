@@ -5,7 +5,7 @@ This design uses a Bayesian interval-based model to make decisions. It is advant
 
 The two main functionalities of this package are to 1) pre-calculate decision tables, and 2) run simulations with given parameters to evaluate hypothetical performance results.
 
-The parameters that will need to be provided are the testable dose levels, starting dose level, hypothetical true probabilities of futility, efficacy, and toxicity for all tested doses (the "scenario"), target futility and toxicity probabilities, equivalence interval tolerance levels, highest allowable thresholds, maximum sample size, and cohort size.
+The parameters that will need to be provided are the testable dose levels, starting dose level, hypothetical true probabilities of futility, efficacy, and toxicity for all tested doses (the "scenario"), target futility and toxicity probabilities, equivalence interval tolerance levels, highest allowable thresholds, maximum sample size, and cohort size.  Currently the package only supports symmetric equivalence intervals.
 
 An example usage is shown below:
 
