@@ -46,7 +46,10 @@ for(N in seq(3, 21, by=3)) {
 }
 ```
 
-Please look at the decision tables and make any necessary adjustments (example in simulation code) before using, as some boundaries could be rough.
+Please look at the decision tables and make any necessary adjustments before using, as some boundaries could be rough. For example, to change the decision in `decision_table12` for 3 futilities and 3 toxicities to "Stay", use the following command: 
+
+`decision_table12 = change_decisiontable_entry(decision_table12, futility_index = 3+1, toxicity_index = 3+1, new_decision = "S") # note we need to +1 to the indexing since we start counting events at 0 but datafames are indexed starting at 1.`
+
 In executing real-life trials, it is only necessary to pre-calculate decision tables for the dose-level sample sizes encountered. 
 The decision table used should correspond to how many patients have been tried at a dose level over the trial so far. 
 The decision-making logic is common to all dose-levels. 
