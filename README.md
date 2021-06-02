@@ -3,6 +3,14 @@ This R package implements the novel modified probability interval (mPI) phase I 
 The mPI design is intended to find the maximum utility dose out of a provided selection. It is useful for treatments where both too low and too high efficacy are actively dangerous to patients, for example in organ transplant mixed-chimerism radiation therapy. 
 This design uses a Bayesian interval-based model to make decisions. It is advantageous in that it does not depend on arbitrary physician-elicited input to make decisions and is flexible enough to adapt to unforeseen parameter or sample size changes during a trial. 
 
+The package can be installed and attached using the following commands:
+
+```
+library(devtools)
+install_github("jiyingz/clinicalMPI")
+library(clinicalMPI)
+```
+
 The two main functionalities of this package are to 1) pre-calculate decision tables, and 2) run simulations with given parameters to evaluate hypothetical performance results.
 
 The parameters that will need to be provided are the testable dose levels, starting dose level, hypothetical true probabilities of futility, efficacy, and toxicity for all tested doses (the "scenario"), target futility and toxicity probabilities, equivalence interval tolerance levels, highest allowable thresholds, maximum sample size, and cohort size.  Currently the package only supports symmetric equivalence intervals.
@@ -38,6 +46,7 @@ for(N in seq(3, 21, by=3)) {
 }
 ```
 
+Please look at the decision tables and make any necessary adjustments (example in simulation code) before using, as some boundaries could be rough.
 In executing real-life trials, it is only necessary to pre-calculate decision tables for the dose-level sample sizes encountered. 
 The decision table used should correspond to how many patients have been tried at a dose level over the trial so far. 
 The decision-making logic is common to all dose-levels. 
