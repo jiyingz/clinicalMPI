@@ -1,5 +1,5 @@
 Package: clinicalMPI
-Title: What the Package Does (One Line, Title Case)
+Title: The novel modified probability interval (mPI) phase I clinical trial design
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
@@ -7,13 +7,15 @@ Authors@R:
            role = c("aut", "cre"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Description: This R package implements the novel modified probability interval (mPI) phase I clinical trial design. The mPI design is intended to find the maximum utility 
+    dose out of a provided selection. It is useful for treatments where both too low and too high efficacy are actively dangerous to patients, for example in organ transplant 
+    mixed-chimerism radiation therapy. This design uses a Bayesian interval-based model to make decisions. It is advantageous in that it does not depend on arbitrary 
+    physician-elicited input to make decisions and is flexible enough to adapt to unforeseen parameter or sample size changes during a trial.
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.1
 Imports: 
     stats (>= 3.6.0),
     MCMCpack (>= 1.4.5)

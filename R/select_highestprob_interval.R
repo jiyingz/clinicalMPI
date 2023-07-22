@@ -18,37 +18,41 @@
 #' best_pt = selected$best_pt
 #' @export
 select_highestprob_interval <- function(dose_info, pf_matrix, pt_matrix) {
+  
   if (!requireNamespace("stats", quietly = TRUE)) {
     stop("Package \"stats\" needed for this function to work. Please install it.",
          call. = FALSE)
   }
-
+  
   post_probs = matrix(0, nrow = nrow(pf_matrix), ncol = nrow(pt_matrix))
-
+  
   for (i in 1:(nrow(post_probs))) {
     for (j in 1:(ncol(post_probs))) {
-
+      
       pf_low = as.numeric(pf_matrix[i,1])
       pf_high = as.numeric(pf_matrix[i,2])
       pt_low = as.numeric(pt_matrix[j,1])
       pt_high = as.numeric(pt_matrix[j,2])
-
+      
       if(pf_high + pt_high <= 1) {
-        post_probs[i,j] = (stats::integrate(
-          function(x) {sapply(x,
-                              function(x) {stats::integrate(
-                                function(y) {trinom_density(x, y, dose_info$X_d, dose_info$Z_d, dose_info$N_d)},
-                                pt_low, pt_high)$value})
-          }, pf_low, pf_high)$value) / ((pt_high - pt_low) * (pf_high - pf_low))
+        innerIntegeral = function(x) {stats::integrate(function(y) {trinom_density(x,
+                                                                                   y,
+                                                                                   dose_info$X_d,
+                                                                                   dose_info$Z_d,
+                                                                                   dose_info$N_d)},
+                                                       pt_low,
+                                                       pt_high)$value}
+        outerIntegral  = stats::integrate(function(x) {sapply(x, innerIntegeral)}, pf_low, pf_high)$value
+        post_probs[i,j] =  outerIntegral / ((pt_high - pt_low) * (pf_high - pf_low))
       } else {
         post_probs[i,j] = 0
       }
     }
   }
-
+  
   best_rect_ind = which(post_probs == max(post_probs, na.rm = T), arr.ind = T)
   best_pf = best_rect_ind[1]
   best_pt = best_rect_ind[2]
-
+  
   return(list("post_probs" = post_probs, "best_pf" = best_pf, "best_pt" = best_pt))
 }

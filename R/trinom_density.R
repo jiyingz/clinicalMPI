@@ -10,7 +10,8 @@
 #' @usage trinom_density(0.4, 0.1, 4, 1, 10)
 #' @export
 trinom_density <- function(x, y, f_count, t_count, N) {
-  if (x < 0 | y < 0) {stop('x and y need to be between 0 and 1')}
+  if (all(x < 0 | y < 0)) {stop('x and y need to be between 0 and 1')}
+  
   if (!requireNamespace("stats", quietly = TRUE)) {
     stop("Package \"stats\" needed for this function to work. Please install it.",
          call. = FALSE)
